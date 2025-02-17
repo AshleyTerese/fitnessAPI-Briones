@@ -1,10 +1,13 @@
-const Workout = require('../models/workout');
+const Workout = require('../models/Workout');
+const express = require('express');
+const auth = require('../auth');
+const { verifyAdmin, errorHandler } = require ('../auth')
 
 module.exports.addWorkout = (req, res) => {
     const newWorkout = new Workout({
         name: req.body.name,
         duration: req.body.duration,
-        user: req.user.id  // Get user id from decoded JWT
+        user: req.user.id 
     });
 
     newWorkout.save()
@@ -19,7 +22,7 @@ module.exports.getWorkouts = (req, res) => {
 };
 
 module.exports.getWorkoutById = (req, res) => {
-    Workout.findOne({ _id: req.params.id, user: req.user.id })  // Ensure workout belongs to user
+    Workout.findOne({ _id: req.params.id, user: req.user.id }) 
         .then(workout => {
             if (!workout) {
                 return res.status(404).send({ error: 'Workout not found' });
