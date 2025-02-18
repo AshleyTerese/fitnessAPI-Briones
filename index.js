@@ -11,7 +11,6 @@
     app.use(express.json());
     app.use(express.urlencoded({extended:true}));
     app.use("/api/users", userRoutes);
-    app.use("/api/items", itemRoutes);
     app.use("/api/workouts", workoutRoutes);
 
     //MongoDB database
