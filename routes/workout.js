@@ -9,6 +9,5 @@ router.get('/getMyWorkouts', verify, workoutController.getWorkouts);
 router.get('/getWorkoutById/:id', verify, workoutController.getWorkoutById);
 router.put('/deleteWorkout/:id', verify, workoutController.updateWorkout);
 router.delete('/deleteWorkout/:id', verify, workoutController.deleteWorkout);
-router.put('/completeWorkoutStatus/:id', verify, workoutController.completeWorkoutStatus);
 
 module.exports = router;
